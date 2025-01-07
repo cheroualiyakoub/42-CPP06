@@ -6,7 +6,7 @@
 /*   By: ycheroua <ycheroua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:37:44 by ycheroua          #+#    #+#             */
-/*   Updated: 2024/12/17 18:41:42 by ycheroua         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:05:00 by ycheroua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,99 @@
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter(void) {}
-ScalarConverter::ScalarConverter(const ScalarConverter  &copy) {}
+ScalarConverter::ScalarConverter(const ScalarConverter  &copy) {(void)copy;}
 ScalarConverter::~ScalarConverter() {}
 
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& copy) 
 {
+	(void)copy;
 	return *this;
 }
 
 
-void ScalarConverter::toChar(std::string value)
+void ScalarConverter::toChar(double val)
 {
-	char c;
+	try
+	{
+		std::cout << "char: ";
+        if (std::isnan(val) || val < 0 || val > 127)
+        	throw std::invalid_argument("impossible");
+		else if (!std::isprint(static_cast<int>(val))) 
+        	throw std::invalid_argument("Non displayable");
+		else
+    	    std::cout << "'" << static_cast<char>(val) << "'" << std::endl;
+    }
+	catch (const std::exception& e)
+	{
+		throw std::invalid_argument(e.what());
+	}
+}
+void ScalarConverter::toFloat(double val)
+{
+    std::cout << "float: ";
+    if (std::isnan(val))
+        std::cout << "nanf" << std::endl;
+    else if (std::isinf(val))
+        std::cout << (val > 0 ? "+inff" : "-inff") << std::endl;
+    else {
+        std::cout << static_cast<float>(val) << "f" << std::endl;
+    }
+}
+void ScalarConverter::toInt(double val)
+{
+	try
+	{
+		std::cout << "int: ";
+		if (std::isnan(val) || val < std::numeric_limits<int>::min() || val > std::numeric_limits<int>::max())
+			throw std::invalid_argument("impossible");
+		else
+			std::cout << static_cast<int>(val) << std::endl;
+    }
+	catch (const std::exception& e)
+	{
+		throw std::invalid_argument(e.what());
+	}
+}
 
-	c = std::convert
-}
-void ScalarConverter::toFloat(std::string value)
+void ScalarConverter::toDouble(double value)
 {
-	
+	(void)value;
 }
-void ScalarConverter::toInt(std::string value)
+
+double ScalarConverter::parseInput(const std::string &value)
 {
-	
+    try {
+        return std::stod(value);
+    } catch (...) 
+	{
+        throw std::invalid_argument(" impossible");
+    }
 }
 
 void ScalarConverter::convert(std::string value)
 {
-	try {toChar(value);}
+	double value_double;
+
+	try 
+	{
+		value_double = parseInput(value);
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: impossible" << std::endl;
+        std::cout << "double: impossible" << std::endl;
+	}
+	try {toChar(value_double);}
 	catch (const std::exception& e){std::cout << e.what() << '\n';}
 	
-	try {toInt(value);}
+	try {toInt(value_double);}
 	catch (const std::exception& e){std::cout << e.what() << '\n';}
 	
-	try {toFloat(value);}
+	try {toFloat(value_double);}
+	catch (const std::exception& e){std::cout << e.what() << '\n';}
+
+	try {toDouble(value_double);}
 	catch (const std::exception& e){std::cout << e.what() << '\n';}
 }
