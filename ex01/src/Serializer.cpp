@@ -32,7 +32,6 @@ Data *Serializer::deserialize(uintptr_t raw)
 	return reinterpret_cast<Data*>(raw);
 }
 
-
 // Data2 *Serializer::deserialize2(uintptr_t raw)
 // {
 // 	return reinterpret_cast<Data2*>(raw);

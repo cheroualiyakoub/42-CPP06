@@ -6,12 +6,12 @@
 /*   By: ycheroua <ycheroua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:37:46 by ycheroua          #+#    #+#             */
-/*   Updated: 2025/01/09 15:13:40 by ycheroua         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:26:17 by ycheroua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef SERIALIZER_HPP
+#define SERIALIZER_HPP
 
 #include <iostream>
 #include <cmath>

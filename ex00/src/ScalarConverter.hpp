@@ -6,7 +6,7 @@
 /*   By: ycheroua <ycheroua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:37:46 by ycheroua          #+#    #+#             */
-/*   Updated: 2025/01/07 18:33:17 by ycheroua         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:09:25 by ycheroua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <sstream>
 #include <limits>
 #include <string>
+#include <iomanip>
 
 
 class ScalarConverter
