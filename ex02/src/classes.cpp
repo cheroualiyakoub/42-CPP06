@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "classes.hpp"
 #include <random>
 
@@ -24,7 +23,7 @@ Base* Base::generate(void)
 		return (new A());
 	else if(random_num == 1)
 		return (new B());
-	else if(random_num == 2)
+	else
 		return (new C());
 	return nullptr;
 }
@@ -64,5 +63,5 @@ void Base::identify(Base& p)
 		std::cout << "Reference is an instance of class C" << std::endl;
 		return ;
 	}
-	catch(std::bad_cast &e) { throw std::invalid_argument("No class matches the Base reference.");}
+	catch(std::bad_cast &e) { std::cout << "Unknown type." << std::endl;;}
 }

@@ -6,7 +6,7 @@
 /*   By: ycheroua <ycheroua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:37:46 by ycheroua          #+#    #+#             */
-/*   Updated: 2025/01/09 15:26:17 by ycheroua         ###   ########.fr       */
+/*   Updated: 2025/03/01 21:22:16 by ycheroua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@
 #include <limits>
 #include <string>
 #include <iomanip>
-
-
-// // for testing 
-// struct Data2 {
-//     int id;
-//     std::string name;
-//     float value;
-// };
-
 
 struct Data {
     int id;
@@ -49,8 +40,6 @@ class Serializer
 	public:
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
-		// static Data2* deserialize2(uintptr_t raw);
-		// static Data2* deserializeData(Data* data);
 
 };
 
